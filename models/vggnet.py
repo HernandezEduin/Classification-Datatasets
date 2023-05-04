@@ -1,3 +1,6 @@
+"""
+Model borrowed from the following repo: https://github.com/adelmanm/approx/tree/main/src/pytorch/wide-resnet.pytorch/networks
+"""
 import torch
 import torch.nn as nn
 from torch.autograd import Variable

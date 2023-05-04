@@ -3,6 +3,9 @@
 Created on Wed Dec  7 20:03:38 2022
 
 @author: Eduin Hernandez
+
+LeNet Model borrowed from the following repo:
+    https://github.com/adelmanm/approx/tree/main/src/pytorch/wide-resnet.pytorch/networks
 """
 
 from collections import OrderedDict
