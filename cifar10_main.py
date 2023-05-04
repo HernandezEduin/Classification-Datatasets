@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Apr 24 00:26:48 2023
+Created on Thu May  4 21:20:28 2023
 
 @author: Eduin Hernandez
+Summary: Benchmark on Training with on CIFAR10/100
 """
 #-----------------------------------------------------------------------------
 'Libraries'
