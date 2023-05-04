@@ -1,5 +1,5 @@
 # Classification Datatasets
- Simple example on how to train models on the classification tasks
+ Simple example on how to train models on the classification tasks using pytorch.
 
 ## Available Datasets for Training and Validation:
 1. MNIST
