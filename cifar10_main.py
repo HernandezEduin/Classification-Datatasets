@@ -62,7 +62,7 @@ def parse_args():
     'Print and Plot'
     parser.add_argument('--plot-state', type=str2bool, default='True', help='Whether to plot the results')
     parser.add_argument('--verbose-state-sim', type=str2bool, default='True', help='Whether to print the results per simulation')
-    parser.add_argument('--verbose-state', type=str2bool, default='True', help='Whether to print the results at end of code')
+    parser.add_argument('--verbose-state', type=str2bool, default='False', help='Whether to print the results at end of code')
     
     args = parser.parse_args()
     return args
@@ -138,7 +138,7 @@ def run_experiment(args):
     
     speed = np.zeros(args.simulation_num)
 
-    sim_bar = tqdm(total=args.simulation_num, position=0, disable=not(args.verbose_state))
+    sim_bar = tqdm(total=args.simulation_num, position=0, disable=not(args.verbose_state), leave=False)
     for sim_num in range(args.simulation_num):
         if args.use_manual_seed:
             torch.manual_seed(sim_num + 1)
@@ -158,7 +158,7 @@ def run_experiment(args):
             
         start_time = time.time()
         
-        pbar = tqdm(total=args.epoch_num, position=1, disable=not(args.verbose_state_sim))
+        pbar = tqdm(total=args.epoch_num, position=0, disable=not(args.verbose_state_sim), leave=False)
         'Train and Validate Network'
         for epoch in range(args.epoch_num):  # loop over the dataset multiple times
             correct = 0
@@ -214,6 +214,10 @@ def run_experiment(args):
             acc_val[sim_num, epoch] = correct_val/ test_size
             losses_val[sim_num, epoch] = running_loss_val / test_size
     
+            pbar.set_description('Model: %d, Acc: %.5f, Loss: %.5f, Val_Acc: %.5f, Val_Loss: %.5f' % (sim_num + 1,
+                acc[sim_num,epoch], losses[sim_num,epoch], acc_val[sim_num,epoch], losses_val[sim_num,epoch]),
+                refresh=False)
+            
             pbar.update(1)
 
         speed[sim_num] = time.time() - start_time
