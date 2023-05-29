@@ -235,7 +235,7 @@ def run_experiment(args):
     'Plotting Results'
     if args.plot_state:
         plt.figure()
-        plt.title('Loss - ' + args.code_type)
+        plt.title('Loss')
         plt.plot(losses.mean(axis=0), color='C2', label='Train Loss')
         plt.plot(losses_val.mean(axis=0), color='C3',label='Val Loss')
         plt.xlabel('Epoch')
@@ -244,7 +244,7 @@ def run_experiment(args):
         plt.grid()    
         
         plt.figure()
-        plt.title('Acc - ' + args.code_type)
+        plt.title('Acc')
         plt.plot(acc.mean(axis=0), color='C2', label='Train Acc')
         plt.plot(acc_val.mean(axis=0), color='C3',label='Val Acc')
         plt.xlabel('Epoch')
